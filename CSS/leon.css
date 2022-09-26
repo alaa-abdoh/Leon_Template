@@ -1,0 +1,453 @@
+/*start variables*/
+:root{
+    --main-color:#10cab7;
+    --section-padding:60px;
+    --section-background:#f6f6f6;
+}
+/*end variables*/
+/* Start Global Rules*/
+*{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+  }
+
+body{
+    font-family: "Work Sans", sans-serif;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+.container{
+    /*width:600px; not required after write width of container in media Quires*/
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/*screens with width less than 765 (max-width:767px) take the default width of container (100%)*/
+/*small screen*/
+@media (min-width:768px) {
+    .container{
+        width:750px; /*the screen minimum will be 768 ( let the screen 768), i need width of container be less than 768 to let spaces from left and right of*/
+    }
+}
+
+/*medium screen*/
+@media (min-width:992px) {
+    .container{
+        width:970px;
+    }
+}
+
+/*large screen*/
+@media (min-width:1200px) {
+    .container{
+        width:1170px;
+    }
+}
+/* end Global Rules*/
+/*Start Components (Style repeat alots of time) */
+.special-heading{
+    font-size: 100px;
+    text-align: center;
+    color: #ebeced;
+    margin: 0;
+    letter-spacing: -5px;
+    font-weight: 800;
+}
+.special-heading + p{
+    margin: -30px 0 0 0;
+    text-align: center;
+    color: #777;
+    font-size: 20px;
+}
+@media (max-width:767px){
+    .special-heading{
+        font-size:50px;  
+    }
+    .special-heading + p{
+        margin-top: -20px;
+    }
+}
+/*End Components*/
+/*Start Header*/
+    .header{
+        padding: 20px;        
+    }
+    .header .container{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .header .logo{
+        width: 60px;
+    }
+    .header .links{
+        position: relative; 
+    }
+    .header .links .icon{
+        display: flex;
+        flex-wrap: wrap;
+        width:30px; /* determine it (30) because now become there are no space of spans to become next to each other so wrap now*/
+        justify-content: flex-end;
+    }
+    .header .links .icon span{
+        background-color: #333;
+        height: 2px;
+        margin-bottom: 5px;
+    }
+    .header .links .icon span:first-child{ /* this separation for spans because the width id diffrent for each one*/
+        width:30px;
+    }
+    .header .links .icon span:nth-child(2){
+        width:15px;
+        transition: width 0.4s;
+    }
+    .header .links .icon span:last-child{
+        width:30px;
+    }
+    .header .links:hover .icon span:nth-child(2){
+        width:30px;
+    }
+    .header .links ul{
+        list-style-type: none;
+        padding: 0;
+        background-color: #f6f6f6;
+        position: absolute;
+        width: 200px;
+        right: 0;
+        top: calc(100% + 15px);
+        display: none;
+    }
+    .header .links ul::after{
+        content:" ";
+        position: absolute;
+        width:0px;
+        height: 0px;
+        border-width: 10px;
+        border-style: solid;
+        border-color: transparent transparent #f6f6f6 transparent;
+        top:-20px;
+        right: 5px;
+    }
+    .header .links:hover ul{
+        display: block;
+    }
+    .header .links ul a{
+        text-decoration: none;
+        padding: 15px;
+        display: block;
+        color: #333;
+        transition: 0.4s padding-left;
+    }
+    .header .links ul li a:hover{
+        padding-left: 25px;
+    }
+    .header .links ul li:not(:last-child) a{
+        border-bottom: 1px solid #ccc;
+
+    }
+/*End Header*/
+/* Start Landing Section */
+    .landing{
+        background-image: url(..//images/landing.jpg);
+        background-size: cover;
+        background-position: bottom;
+        height: calc(100vh - 64px);
+        position: relative;
+        z-index: -1;
+    }
+    .landing .intro-text{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        line-height: 1.8;
+        text-align: center;
+        width: 320px; /*determine it as 320 because without it the text will be compressed in small screen ++ to make the paraghraph in 2 line instead of one (the width become smaller now ) in normal screen*/
+        max-width: 100%; /*because if screen is small (ex 300px) 320 will be large so the text will out the div and make horizontal scroll*/
+    }
+    .landing .intro-text h1{
+        margin: 0;
+        color:var(--main-color);
+        font-size: 50px;
+        font-weight: bold;
+    }
+    .landing .intro-text p{
+        font-size: 19px;
+        color: white;
+    }
+/* End Landing Section */
+/*Starting Features*/
+    .features{
+        background-color: var(--section-background);
+        padding-top: var(--section-padding);
+        padding-bottom: var(--section-padding);
+    }
+    .features .container{
+        display: grid;
+        grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
+        gap: 30px;
+        overflow-x: hidden;
+    }
+    .features .feat{
+        padding:20px;/*good for spaces between them in mobile (or margin )*/
+        text-align: center;
+        max-width: 100vw;
+    }
+    .features i{
+        color: var(--main-color);
+    }
+    .features .feat h3{
+        font-weight: 800;/*800 is extra bold (we select it when we get gont family from google)*/
+        margin:25px auto;
+    }
+    .features .feat p{
+        line-height: 1.8;
+        color:#777;
+    }
+/*End Features*/
+/* Start Services  */
+.services{
+    padding-top: var(--section-padding);
+    padding-bottom: var(--section-padding);
+}
+.services .service-content{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+    gap:20px;
+    margin-top: 100px;
+}
+.services .service-content .srv{
+    display: flex;
+    margin-bottom: 40px;
+    max-width: 100vw;
+}
+@media (max-width:767px){
+    .services .service-content .srv{
+        flex-direction: column;
+        text-align: center;
+    }
+}
+.services .service-content .srv i{
+    color: var(--main-color);
+    flex-basis:  60px;
+}
+.services .service-content .srv .text{
+    flex-basis: 0%; /*let the width (or height if it in mobile where it column flex) be 0 so the icon now can be apply"flex-basis:  60px;" because there are space and then there are alot of extra space so flex-grwo:1 for text to back large*/
+    flex-grow: 1; 
+}
+.services .service-content .srv .text h3{
+    margin-bottom: 20px;
+}
+.services .service-content .srv .text p{
+    color: #777;
+    font-weight: 400;
+    line-height: 1.5;
+}
+.services .service-content .img{
+    text-align: center; /*to put the image in the midlle of img div*/
+    position: relative;
+}
+.services .service-content .img::before{
+    content: "";
+    position: absolute;
+    background-color: #2c4755;
+    width:100px;
+    height: calc(100% + 100px);
+    right: 0;
+    top:-50px;
+    z-index: -1;
+}
+.services .service-content .img img{
+    width: 260px; /*width of .img div is 360px, the image now 260px and it is in center of div because text-align:center, so now 50 in left and 50 in right and this is what need, instead of this we can put the image absolute and right:50px but the .img div will be embty now so its width 0 so we must change width of after to be cons number*/
+ }
+@media (max-width:1199px){
+    .img-column{
+        display: none;
+    }
+} 
+/* end Services  */
+/*Start Portfolio*/
+.portfolio{
+    padding-top: var(--section-padding);
+    padding-bottom: var(--section-padding);
+    background-color: var(--section-background);
+}
+.portfolio .portfolio-content{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+    gap: 30px;
+    margin-top: 100px;
+}
+.portfolio .portfolio-content .card{
+    background-color: white;
+    max-width: calc(100vw - 30px); /*30px = 15px + 15px padding left + right*/
+}
+.portfolio .portfolio-content .card img{
+    max-width: 100%;
+}
+.portfolio .portfolio-content .card .info{
+    padding: 20px;
+}
+.portfolio .portfolio-content .card .info p{
+    margin-top: 16px;
+    color:#777;
+    line-height: 1.8;
+}
+/*End Portfolio*/
+/* Start About */
+.about{
+    padding-top: var(--section-padding);
+    padding-bottom: var(--section-padding);
+}
+.about .about-content{
+    margin-top: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.about .about-content .image {
+   position: relative;
+   width: 260px;
+   height: 390px; /*when we determint the width as 260 the height of image by default become 390 so the div .image also 390 (if you dont write it and let it as it the text come on photo, Therefore the space must be reserved by the div)*/
+}
+.about .about-content img {
+   max-width: 100%; 
+}
+.about .about-content .image::before{
+    content: " " ;
+    position: absolute;
+    background-color: #ebeced;
+    width: 80px;
+    height: calc(100% + 70px);
+    top: -35px;
+    left: -20px;
+    z-index: -1;
+}
+.about .about-content .image .shape{ /*(shape) for L shape, iam add it instead of osama approach (he use border) */
+    display: grid;
+    grid-template-columns: 80px 120px;
+    grid-template-rows: 300px 70px;
+    position: absolute;
+    top: -35px;
+    right: -160px;
+    z-index: -1;
+}
+.about .about-content .image .shape span:first-child{
+    display: inline-block;
+    background-color: var(--main-color);
+    grid-area: 1/1/3/2;
+}
+.about .about-content .image span:not(:first-child){
+    display: inline-block; 
+    background-color: var(--main-color); 
+    grid-area: 2/2/3/3;
+}
+.about .about-content .text{
+    flex-basis: calc(100% - 500px); /*500px for another (image + spaca between)*/
+}
+.about .about-content .text p:first-child{
+    line-height: 2;
+    font-weight: bold;
+    margin-bottom: 50px;
+}
+.about .about-content .text hr{
+    width: 50%;
+    border-color: var(--main-color); /* border-color not colot because hr consider a border */
+}
+.about .about-content .text p:last-child{
+    line-height: 1.5;
+    color: #777;
+    margin-top: 16px;
+}
+@media (max-width:991px){
+    .about .about-content{
+        flex-direction: column;
+        text-align: center;
+    }
+    hr{
+        margin: 0 auto;
+    }
+    .about .about-content .image {
+        margin: 0 auto 60px;
+    }
+}
+@media (max-width:767px){
+    .about .about-content .image{
+        width: 180px;
+        height: 250px;
+    }
+    .about .about-content .image img{
+        height: 250px;
+        width: 180px;
+    }
+    .about .about-content .image::before{
+        width: 50px;
+        height: calc(100% + 50px);
+        top:-25px;
+    }
+    .about .about-content .image .shape{ /*(shape) for L shape, iam add it instead of osama approach (he use border) */
+        display: grid;
+        grid-template-columns: 50px;
+        grid-template-rows: 300px;
+        top: -25px;
+        right: -25px;
+    }
+}
+/* end About */
+/*Start Contact*/
+.contact {
+    padding-top: var(--section-padding);
+    padding-bottom: var(--section-padding);
+    background-color: var(--section-background);
+}
+.contact .info{
+    margin-top: calc(var(--section-padding) + 10px);
+    margin-bottom: calc(var(--section-padding) + 10px);
+    text-align: center;    
+}
+.contact .info p{
+    color: #2c4755;
+    font-size: 33px;
+    letter-spacing: -3px;
+    margin-bottom: 15px;
+    font-weight: 800;
+}
+.contact .info .link{
+    color: var(--main-color);
+    font-size: 33px;
+    font-weight: 800;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 15px;
+}
+.contact .info .social i{
+    color:var(--main-color);
+    margin-left: 7px;
+}
+@media (max-width:767px){
+    .contact .info p,
+    .contact .info .link{
+        font-size: 23px;
+    }
+}
+/* End Contact */
+/* start footer  */
+.footer{
+    padding: 35px 0;
+    background-color: #2c4755;
+    text-align: center;
+    color: white;
+    font-size: 19px;
+}
+.footer span{
+    color:var(--main-color);
+    font-weight:bold;
+}
+/* end footer  */
